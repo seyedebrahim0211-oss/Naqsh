@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <NeutralLanguage>en-US</NeutralLanguage>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Naqsh.Core\Naqsh.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Strings.resx" LogicalName="Naqsh.Localization.Resources.Strings.resources" />
+    <EmbeddedResource Update="Resources\Strings.fa-IR.resx" LogicalName="Naqsh.Localization.Resources.Strings.fa-IR.resources" />
+  </ItemGroup>
+</Project>

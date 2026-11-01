@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Assembly is Naqsh.EngineLib so it never collides with the Naqsh.Engine.exe host. -->
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <AssemblyName>Naqsh.EngineLib</AssemblyName>
+    <RootNamespace>Naqsh.Engine</RootNamespace>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Naqsh.Core\Naqsh.Core.csproj" />
+    <PackageReference Include="Vortice.Direct3D11" />
+    <PackageReference Include="Vortice.DXGI" />
+    <PackageReference Include="Vortice.D3DCompiler" />
+    <PackageReference Include="Serilog" />
+    <PackageReference Include="FFmpeg.AutoGen" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Naqsh.Engine.Tests" />
+  </ItemGroup>
+</Project>

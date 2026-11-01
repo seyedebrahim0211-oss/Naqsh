@@ -1,0 +1,428 @@
+<Window x:Class="Naqsh.App.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:loc="clr-namespace:Naqsh.App.Localization"
+        xmlns:l10n="clr-namespace:Naqsh.Localization;assembly=Naqsh.Localization"
+        xmlns:vm="clr-namespace:Naqsh.App.ViewModels"
+        xmlns:mon="clr-namespace:Naqsh.App.Monitors"
+        xmlns:c="clr-namespace:Naqsh.App.Controls"
+        Style="{StaticResource Window.Base}"
+        Title="{loc:Loc App_Name}"
+        FlowDirection="{loc:LocFlow}"
+        MinWidth="1280" MinHeight="720" Width="1600" Height="900"
+        WindowStartupLocation="CenterScreen"
+        x:Name="Root">
+    <Window.InputBindings>
+        <KeyBinding Key="Space" Command="{Binding CutCommand}" />
+        <KeyBinding Key="Return" Command="{Binding FadeCommand}" />
+        <KeyBinding Key="R" Modifiers="Control" Command="{Binding ToggleRecordCommand}" />
+        <KeyBinding Key="L" Modifiers="Control" Command="{Binding ToggleLanguageCommand}" />
+        <KeyBinding Key="OemComma" Modifiers="Control" Command="{Binding OpenSettingsCommand, ElementName=Root}" />
+        <KeyBinding Key="D1" Command="{Binding PreviewNumberCommand}" CommandParameter="1" />
+        <KeyBinding Key="D2" Command="{Binding PreviewNumberCommand}" CommandParameter="2" />
+        <KeyBinding Key="D3" Command="{Binding PreviewNumberCommand}" CommandParameter="3" />
+        <KeyBinding Key="D4" Command="{Binding PreviewNumberCommand}" CommandParameter="4" />
+        <KeyBinding Key="D5" Command="{Binding PreviewNumberCommand}" CommandParameter="5" />
+        <KeyBinding Key="D6" Command="{Binding PreviewNumberCommand}" CommandParameter="6" />
+        <KeyBinding Key="D7" Command="{Binding PreviewNumberCommand}" CommandParameter="7" />
+        <KeyBinding Key="D8" Command="{Binding PreviewNumberCommand}" CommandParameter="8" />
+        <KeyBinding Key="D9" Command="{Binding PreviewNumberCommand}" CommandParameter="9" />
+        <KeyBinding Key="NumPad1" Command="{Binding PreviewNumberCommand}" CommandParameter="1" />
+        <KeyBinding Key="NumPad2" Command="{Binding PreviewNumberCommand}" CommandParameter="2" />
+        <KeyBinding Key="NumPad3" Command="{Binding PreviewNumberCommand}" CommandParameter="3" />
+        <KeyBinding Key="NumPad4" Command="{Binding PreviewNumberCommand}" CommandParameter="4" />
+        <KeyBinding Key="NumPad5" Command="{Binding PreviewNumberCommand}" CommandParameter="5" />
+        <KeyBinding Key="NumPad6" Command="{Binding PreviewNumberCommand}" CommandParameter="6" />
+        <KeyBinding Key="NumPad7" Command="{Binding PreviewNumberCommand}" CommandParameter="7" />
+        <KeyBinding Key="NumPad8" Command="{Binding PreviewNumberCommand}" CommandParameter="8" />
+        <KeyBinding Key="NumPad9" Command="{Binding PreviewNumberCommand}" CommandParameter="9" />
+    </Window.InputBindings>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- ============================ Header ============================ -->
+        <Border Grid.Row="0" Background="{StaticResource Brush.Bg.Panel}" BorderBrush="{StaticResource Brush.Border}" BorderThickness="0,0,0,1">
+            <Grid>
+                <Rectangle Fill="{StaticResource Brush.Girih}" IsHitTestVisible="False" />
+                <DockPanel Margin="12,6" LastChildFill="False">
+                    <!-- Logo -->
+                    <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Image Source="{StaticResource Image.Khatam}" Width="32" Height="32" />
+                        <TextBlock Text="{loc:Loc App_Name}" Margin="8,0,16,0" VerticalAlignment="Center" Foreground="{StaticResource Brush.Accent.Gold}">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="FontFamily" Value="{StaticResource Font.UI}" />
+                                    <Setter Property="FontWeight" Value="ExtraBold" />
+                                    <Setter Property="FontSize" Value="22" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsRightToLeft, Source={x:Static l10n:LocalizationService.Instance}}" Value="True">
+                                            <Setter Property="FontFamily" Value="{StaticResource Font.Brand}" />
+                                            <Setter Property="FontWeight" Value="Normal" />
+                                            <Setter Property="FontSize" Value="28" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </StackPanel>
+
+                    <!-- Workspace tabs (only Director exists in Phase 1) -->
+                    <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" VerticalAlignment="Center">
+                        <RadioButton GroupName="Workspace" IsChecked="True" Content="{loc:Loc Workspace_Director}" Margin="2,0" />
+                        <RadioButton GroupName="Workspace" IsEnabled="False" Content="{loc:Loc Workspace_Audio}" Margin="2,0"
+                                     ToolTip="{loc:Loc Workspace_ComingSoon}" ToolTipService.ShowOnDisabled="True" />
+                        <RadioButton GroupName="Workspace" IsEnabled="False" Content="{loc:Loc Workspace_Color}" Margin="2,0"
+                                     ToolTip="{loc:Loc Workspace_ComingSoon}" ToolTipService.ShowOnDisabled="True" />
+                        <RadioButton GroupName="Workspace" IsEnabled="False" Content="{loc:Loc Workspace_Graphics}" Margin="2,0"
+                                     ToolTip="{loc:Loc Workspace_ComingSoon}" ToolTipService.ShowOnDisabled="True" />
+                    </StackPanel>
+
+                    <!-- Clock and date -->
+                    <StackPanel DockPanel.Dock="Right" VerticalAlignment="Center" Margin="12,0,0,0" MinWidth="170">
+                        <TextBlock Text="{Binding ClockText}" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"
+                                   Typography.NumeralAlignment="Tabular" Foreground="{StaticResource Brush.Text.Primary}" />
+                        <TextBlock Text="{Binding DateText}" FontSize="12" HorizontalAlignment="Center" Foreground="{StaticResource Brush.Text.Secondary}" />
+                    </StackPanel>
+
+                    <!-- Record -->
+                    <Button DockPanel.Dock="Right" Command="{Binding ToggleRecordCommand}" ToolTip="{loc:Loc Record_Tooltip}" Margin="6,0" MinWidth="110">
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource Btn}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsRecording}" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource Brush.Tally.Program.Fill}" />
+                                        <Setter Property="BorderBrush" Value="{StaticResource Brush.Tally.Program}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse Width="10" Height="10" Fill="{StaticResource Brush.Tally.Program}" Margin="0,0,6,0" VerticalAlignment="Center" />
+                            <TextBlock VerticalAlignment="Center">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Text" Value="{loc:Loc Record_Start}" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsRecording}" Value="True">
+                                                <Setter Property="Text" Value="{loc:Loc Record_Stop}" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <TextBlock Text="{Binding RecordingTime}" Margin="6,0,0,0" VerticalAlignment="Center" FlowDirection="LeftToRight"
+                                       Typography.NumeralAlignment="Tabular" />
+                        </StackPanel>
+                    </Button>
+
+                    <!-- Language FA | EN -->
+                    <Button DockPanel.Dock="Right" Command="{Binding ToggleLanguageCommand}" ToolTip="{loc:Loc Lang_Switch_Tooltip}" Margin="6,0">
+                        <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                            <TextBlock Text="{loc:Loc Lang_Short_Fa}">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground" Value="{StaticResource Brush.Text.Secondary}" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsPersian}" Value="True">
+                                                <Setter Property="Foreground" Value="{StaticResource Brush.Accent.Gold}" />
+                                                <Setter Property="FontWeight" Value="Bold" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <TextBlock Text=" | " Foreground="{StaticResource Brush.Border}" />
+                            <TextBlock Text="{loc:Loc Lang_Short_En}">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground" Value="{StaticResource Brush.Accent.Gold}" />
+                                        <Setter Property="FontWeight" Value="Bold" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsPersian}" Value="True">
+                                                <Setter Property="Foreground" Value="{StaticResource Brush.Text.Secondary}" />
+                                                <Setter Property="FontWeight" Value="Normal" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <!-- Settings -->
+                    <Button DockPanel.Dock="Right" Command="{Binding OpenSettingsCommand, ElementName=Root}" ToolTip="{loc:Loc Settings_Tooltip}"
+                            Content="{loc:Loc Settings_Title}" Margin="6,0" />
+
+                    <!-- Simple / Pro -->
+                    <ToggleButton DockPanel.Dock="Right" IsChecked="{Binding IsProMode, Mode=TwoWay}" ToolTip="{loc:Loc Mode_Tooltip}" Margin="6,0">
+                        <TextBlock>
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Text" Value="{loc:Loc Mode_Simple}" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsProMode}" Value="True">
+                                            <Setter Property="Text" Value="{loc:Loc Mode_Pro}" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </ToggleButton>
+                </DockPanel>
+            </Grid>
+        </Border>
+
+        <!-- ============================ Monitor row (always LTR) ============================ -->
+        <Grid Grid.Row="1" FlowDirection="LeftToRight" Margin="12,12,12,6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="132" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Preview -->
+            <DockPanel Grid.Column="0">
+                <DockPanel DockPanel.Dock="Top" Margin="0,0,0,4" FlowDirection="{loc:LocFlow}">
+                    <Border DockPanel.Dock="Left" Background="{StaticResource Brush.Tally.Preview.Fill}" CornerRadius="3" Padding="8,1">
+                        <TextBlock Text="{loc:Loc Monitor_Preview}" FontWeight="Bold" FontSize="12" Foreground="{StaticResource Brush.Text.Primary}" />
+                    </Border>
+                    <TextBlock Text="{Binding PreviewName}" Margin="8,0" VerticalAlignment="Center" Foreground="{StaticResource Brush.Text.Secondary}" TextTrimming="CharacterEllipsis" />
+                </DockPanel>
+                <c:AspectRatioDecorator>
+                    <Border BorderBrush="{StaticResource Brush.Tally.Preview}" BorderThickness="3" Background="{StaticResource Brush.Bg.Monitor}">
+                        <Grid>
+                            <mon:VideoMonitorHost Source="{Binding PreviewSource}" />
+                        </Grid>
+                    </Border>
+                </c:AspectRatioDecorator>
+            </DockPanel>
+
+            <!-- Transitions -->
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="12,0" FlowDirection="{loc:LocFlow}">
+                <Button Style="{StaticResource Btn.Gold}" Command="{Binding CutCommand}" ToolTip="{loc:Loc Tooltip_Cut}"
+                        Content="{loc:Loc Transition_Cut}" MinHeight="56" FontSize="18" Margin="0,0,0,10" />
+                <Button Command="{Binding FadeCommand}" ToolTip="{loc:Loc Tooltip_Fade}"
+                        Content="{loc:Loc Transition_Fade}" MinHeight="48" FontSize="16" Margin="0,0,0,8" />
+                <TextBlock Text="{loc:Loc Transition_Duration}" Style="{StaticResource Text.Label}" HorizontalAlignment="Center" Margin="0,0,0,4" />
+                <ItemsControl ItemsSource="{x:Static vm:MainViewModel.FadeDurations}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="2" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <ToggleButton Margin="2" MinHeight="28" Padding="4,0"
+                                          Command="{Binding DataContext.SetFadeDurationCommand, ElementName=Root}" CommandParameter="{Binding}"
+                                          Content="{Binding Converter={StaticResource MsToSeconds}}">
+                                <ToggleButton.IsChecked>
+                                    <MultiBinding Converter="{StaticResource Equals}" Mode="OneWay">
+                                        <Binding />
+                                        <Binding Path="DataContext.FadeDurationMs" ElementName="Root" />
+                                    </MultiBinding>
+                                </ToggleButton.IsChecked>
+                            </ToggleButton>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+
+            <!-- Program -->
+            <DockPanel Grid.Column="2">
+                <DockPanel DockPanel.Dock="Top" Margin="0,0,0,4" FlowDirection="{loc:LocFlow}">
+                    <Border DockPanel.Dock="Left" Background="{StaticResource Brush.Tally.Program.Fill}" CornerRadius="3" Padding="8,1">
+                        <TextBlock Text="{loc:Loc Monitor_Program}" FontWeight="Bold" FontSize="12" Foreground="{StaticResource Brush.Text.Primary}" />
+                    </Border>
+                    <TextBlock DockPanel.Dock="Right" Text="{Binding TimecodeText}" Style="{StaticResource Text.Technical}" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding ProgramName}" Margin="8,0" VerticalAlignment="Center" Foreground="{StaticResource Brush.Text.Secondary}" TextTrimming="CharacterEllipsis" />
+                </DockPanel>
+                <c:AspectRatioDecorator>
+                    <Border BorderBrush="{StaticResource Brush.Tally.Program}" BorderThickness="3" Background="{StaticResource Brush.Bg.Monitor}">
+                        <mon:VideoMonitorHost Source="{Binding ProgramSource}" />
+                    </Border>
+                </c:AspectRatioDecorator>
+            </DockPanel>
+        </Grid>
+
+        <!-- ============================ Inputs + side panel ============================ -->
+        <Grid Grid.Row="2" Margin="12,6,12,8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Style="{StaticResource Panel.Card}">
+                <DockPanel>
+                    <DockPanel DockPanel.Dock="Top" Margin="0,0,0,8">
+                        <TextBlock Text="{loc:Loc Inputs_Title}" Style="{StaticResource Text.Heading}" VerticalAlignment="Center" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button x:Name="AddColorButton" Click="OnAddColorClick" ToolTip="{loc:Loc Input_Add_Tooltip}" Margin="4,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="+" Margin="0,0,6,0" FontWeight="Bold" />
+                                    <TextBlock Text="{loc:Loc Input_AddColor}" />
+                                </StackPanel>
+                                <Button.ContextMenu>
+                                    <ContextMenu ItemsSource="{x:Static vm:MainViewModel.ColorPresets}">
+                                        <ContextMenu.ItemContainerStyle>
+                                            <Style TargetType="MenuItem">
+                                                <Setter Property="Command" Value="{Binding DataContext.AddColorCommand, RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
+                                                <Setter Property="CommandParameter" Value="{Binding}" />
+                                                <Setter Property="Foreground" Value="{StaticResource Brush.Text.Primary}" />
+                                            </Style>
+                                        </ContextMenu.ItemContainerStyle>
+                                        <ContextMenu.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Border Width="16" Height="16" CornerRadius="3" Background="{Binding Brush}" BorderBrush="{StaticResource Brush.Border}" BorderThickness="1" Margin="0,0,8,0" />
+                                                    <TextBlock Text="{Binding DisplayName}" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ContextMenu.ItemTemplate>
+                                    </ContextMenu>
+                                </Button.ContextMenu>
+                            </Button>
+                            <Button Command="{Binding AddImageCommand}" ToolTip="{loc:Loc Input_Add_Tooltip}" Margin="4,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="+" Margin="0,0,6,0" FontWeight="Bold" />
+                                    <TextBlock Text="{loc:Loc Input_AddImage}" />
+                                </StackPanel>
+                            </Button>
+                            <Button Command="{Binding AddVideoCommand}" ToolTip="{loc:Loc Input_Add_Tooltip}" Margin="4,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="+" Margin="0,0,6,0" FontWeight="Bold" />
+                                    <TextBlock Text="{loc:Loc Input_AddVideo}" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </DockPanel>
+
+                    <Grid>
+                        <!-- Empty state -->
+                        <Border Visibility="{Binding HasNoInputs, Converter={StaticResource BoolToVisibility}}" CornerRadius="6">
+                            <Grid>
+                                <Rectangle Fill="{StaticResource Brush.Girih}" IsHitTestVisible="False" />
+                                <TextBlock Text="{loc:Loc Inputs_Empty}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           Foreground="{StaticResource Brush.Text.Secondary}" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" />
+                            </Grid>
+                        </Border>
+
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" Visibility="{Binding HasNoInputs, Converter={StaticResource InverseBoolToVisibility}}">
+                            <ItemsControl ItemsSource="{Binding Inputs}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type vm:InputTileViewModel}">
+                                        <Border Width="176" Margin="0,0,8,8" CornerRadius="6" Background="{StaticResource Brush.Bg.Raised}" Padding="8">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="BorderBrush" Value="{StaticResource Brush.Border}" />
+                                                    <Setter Property="BorderThickness" Value="1" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsOnPreview}" Value="True">
+                                                            <Setter Property="BorderBrush" Value="{StaticResource Brush.Tally.Preview}" />
+                                                            <Setter Property="BorderThickness" Value="3" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding IsOnProgram}" Value="True">
+                                                            <Setter Property="BorderBrush" Value="{StaticResource Brush.Tally.Program}" />
+                                                            <Setter Property="BorderThickness" Value="3" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <StackPanel>
+                                                <DockPanel>
+                                                    <TextBlock DockPanel.Dock="Left" Text="{Binding NumberText}" FontWeight="ExtraBold" Foreground="{StaticResource Brush.Accent.Gold}" FontSize="16" />
+                                                    <Border DockPanel.Dock="Right" CornerRadius="3" Padding="6,0"
+                                                            Visibility="{Binding TallyText, Converter={StaticResource NonEmptyToVisibility}}">
+                                                        <Border.Style>
+                                                            <Style TargetType="Border">
+                                                                <Setter Property="Background" Value="{StaticResource Brush.Tally.Preview.Fill}" />
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding IsOnProgram}" Value="True">
+                                                                        <Setter Property="Background" Value="{StaticResource Brush.Tally.Program.Fill}" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Border.Style>
+                                                        <TextBlock Text="{Binding TallyText}" FontSize="11" FontWeight="Bold" />
+                                                    </Border>
+                                                    <TextBlock Text="{Binding KindText}" Style="{StaticResource Text.Label}" Margin="6,0" VerticalAlignment="Center" />
+                                                </DockPanel>
+                                                <Border Height="40" Margin="0,6" CornerRadius="3" Background="{Binding Swatch, TargetNullValue={StaticResource Brush.Bg.Monitor}}"
+                                                        BorderBrush="{StaticResource Brush.Border}" BorderThickness="1">
+                                                    <TextBlock Text="{Binding StatusText}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="11">
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="Foreground" Value="{StaticResource Brush.Text.Secondary}" />
+                                                                <Setter Property="Visibility" Value="Collapsed" />
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding Descriptor.Kind}" Value="Image">
+                                                                        <Setter Property="Visibility" Value="Visible" />
+                                                                    </DataTrigger>
+                                                                    <DataTrigger Binding="{Binding Descriptor.Kind}" Value="Video">
+                                                                        <Setter Property="Visibility" Value="Visible" />
+                                                                    </DataTrigger>
+                                                                    <DataTrigger Binding="{Binding IsProblem}" Value="True">
+                                                                        <Setter Property="Foreground" Value="{StaticResource Brush.Accent.Gold}" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+                                                </Border>
+                                                <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" FontWeight="Medium" ToolTip="{Binding Descriptor.Path}" />
+                                                <UniformGrid Columns="3" Margin="0,6,0,0">
+                                                    <Button Style="{StaticResource Btn.Small}" Margin="0,0,2,0" Content="{loc:Loc Input_ToPreview}" ToolTip="{Binding PreviewTooltip}"
+                                                            Command="{Binding DataContext.PreviewCommand, ElementName=Root}" CommandParameter="{Binding}" />
+                                                    <Button Style="{StaticResource Btn.Small}" Margin="2,0" Content="{loc:Loc Input_Direct}" ToolTip="{loc:Loc Tooltip_Input_Direct}"
+                                                            Command="{Binding DataContext.DirectCommand, ElementName=Root}" CommandParameter="{Binding}" />
+                                                    <Button Style="{StaticResource Btn.Small}" Margin="2,0,0,0" Content="{loc:Loc Input_Remove}" ToolTip="{loc:Loc Tooltip_Input_Remove}"
+                                                            Command="{Binding DataContext.RemoveCommand, ElementName=Root}" CommandParameter="{Binding}" />
+                                                </UniformGrid>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Grid>
+                </DockPanel>
+            </Border>
+
+            <!-- Side panel (Pro mode): mirrors to the left in Persian. -->
+            <Border Grid.Column="1" Width="280" Margin="8,0,0,0" Style="{StaticResource Panel.Card}"
+                    Visibility="{Binding IsProMode, Converter={StaticResource BoolToVisibility}}">
+                <StackPanel>
+                    <TextBlock Text="{loc:Loc Monitor_Program}" Style="{StaticResource Text.Label}" />
+                    <TextBlock Text="{Binding TimecodeText}" FontSize="26" FontWeight="Bold" FlowDirection="LeftToRight" HorizontalAlignment="Left"
+                               Typography.NumeralAlignment="Tabular" Foreground="{StaticResource Brush.Text.Primary}" Margin="0,2,0,10" />
+                    <TextBlock Text="{Binding FormatText}" Foreground="{StaticResource Brush.Text.Secondary}" />
+                    <TextBlock Text="{Binding GpuText}" Foreground="{StaticResource Brush.Text.Secondary}" TextWrapping="Wrap" Margin="0,4,0,0" />
+                    <TextBlock Text="{loc:Loc Workspace_ComingSoon}" Foreground="{StaticResource Brush.Text.Secondary}" TextWrapping="Wrap" Margin="0,16,0,0" FontSize="12" Opacity="0.7" />
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- ============================ Footer ============================ -->
+        <Border Grid.Row="3" Background="{StaticResource Brush.Bg.Panel}" BorderBrush="{StaticResource Brush.Border}" BorderThickness="0,1,0,0" Padding="12,4">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Left" Text="{Binding FpsText}" Style="{StaticResource Text.Label}" Margin="0,0,16,0" />
+                <TextBlock DockPanel.Dock="Left" Text="{Binding DroppedText}" Style="{StaticResource Text.Label}" Margin="0,0,16,0" />
+                <TextBlock DockPanel.Dock="Left" Text="{Binding RecordingDroppedText}" Style="{StaticResource Text.Label}" Margin="0,0,16,0" />
+                <TextBlock DockPanel.Dock="Left" Text="{Binding FormatText}" Style="{StaticResource Text.Label}" Margin="0,0,16,0" />
+                <TextBlock DockPanel.Dock="Right" Text="{Binding ConnectionText}" Style="{StaticResource Text.Label}" Margin="16,0,0,0" />
+                <TextBlock Text="{Binding Notification}" Foreground="{StaticResource Brush.Accent.Gold}" FontWeight="Medium" FontSize="12"
+                           TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" />
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>

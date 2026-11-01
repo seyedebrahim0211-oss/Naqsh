@@ -1,0 +1,151 @@
+# key	en-US	fa-IR
+App_Name	Naqsh	نقش
+App_Tagline	Live production studio	استودیوی تولید زنده
+FirstRun_Title	Welcome to Naqsh	به نقش خوش آمدید
+FirstRun_Subtitle	Choose your language and broadcast region. You can change these later in Settings.	زبان و منطقهٔ پخش را انتخاب کنید. بعداً در تنظیمات قابل تغییر است.
+FirstRun_Language	Language	زبان
+FirstRun_Region	Broadcast region	منطقهٔ پخش
+FirstRun_Region_Hint	Sets the default frame rate for new projects.	نرخ فریم پیش‌فرض پروژه‌های جدید را تعیین می‌کند.
+FirstRun_Start	Start	شروع
+Region_Pal50	25 / 50 fps (Iran, Europe, Asia)	۲۵ / ۵۰ فریم (ایران، اروپا، آسیا)
+Region_Ntsc60	29.97 / 59.94 fps (Americas, Japan)	۲۹٫۹۷ / ۵۹٫۹۴ فریم (آمریکا، ژاپن)
+Lang_Persian	فارسی	فارسی
+Lang_English	English	English
+Lang_Short_Fa	FA	فا
+Lang_Short_En	EN	EN
+Lang_Switch_Tooltip	Switch language (Ctrl+L)	تغییر زبان (Ctrl+L)
+Workspace_Director	Director	کارگردانی
+Workspace_Audio	Audio	صدا
+Workspace_Color	Color	رنگ
+Workspace_Graphics	Graphics	گرافیک
+Workspace_ComingSoon	This workspace arrives in a later phase.	این بخش در فاز بعدی اضافه می‌شود.
+Mode_Simple	Simple	ساده
+Mode_Pro	Pro	حرفه‌ای
+Mode_Tooltip	Switch between Simple and Pro layouts	جابه‌جایی بین چیدمان ساده و حرفه‌ای
+Monitor_Preview	PREVIEW	پیش‌نمایش
+Monitor_Program	PROGRAM	برنامه
+Monitor_NoEngine	Engine not connected	موتور متصل نیست
+Transition_Cut	CUT	برش
+Transition_Fade	FADE	محو
+Transition_Duration	Duration (ms)	مدت (میلی‌ثانیه)
+Tooltip_Cut	Cut Preview to Program (Space)	برش پیش‌نمایش به برنامه (Space)
+Tooltip_Fade	Fade Preview to Program (Enter)	محو پیش‌نمایش به برنامه (Enter)
+Inputs_Title	Inputs	ورودی‌ها
+Inputs_Empty	No inputs yet. Add a color, an image or a video file.	هنوز ورودی‌ای ندارید. یک رنگ، تصویر یا فایل ویدیویی اضافه کنید.
+Input_AddColor	Color	رنگ
+Input_AddImage	Image	تصویر
+Input_AddVideo	Video	ویدیو
+Input_Add_Tooltip	Add input	افزودن ورودی
+Input_ToPreview	Preview	پیش‌نمایش
+Input_Direct	Direct	مستقیم
+Input_Remove	Remove	حذف
+Tooltip_Input_Preview	Send to Preview (number key {0})	ارسال به پیش‌نمایش (کلید عدد {0})
+Tooltip_Input_Direct	Cut straight to Program	برش مستقیم به برنامه
+Tooltip_Input_Remove	Remove this input	حذف این ورودی
+Input_Status_Loading	Loading…	در حال بارگذاری…
+Input_Status_Ready	Ready	آماده
+Input_Status_Offline	Offline	قطع
+Input_Status_ComponentMissing	FFmpeg missing	FFmpeg نصب نیست
+Input_Kind_Color	Color	رنگ
+Input_Kind_Image	Image	تصویر
+Input_Kind_Video	Video	ویدیو
+Tally_Program	ON AIR	روی آنتن
+Tally_Preview	PVW	پیش
+Color_Black	Black	مشکی
+Color_White	White	سفید
+Color_Lapis	Lapis	لاجوردی
+Color_Turquoise	Turquoise	فیروزه‌ای
+Color_Saffron	Saffron	زعفرانی
+Color_Red	Red	قرمز
+Color_Green	Green	سبز
+Color_Blue	Blue	آبی
+Color_Gray	Gray	خاکستری
+Record_Start	REC	ضبط
+Record_Stop	STOP	توقف
+Record_Tooltip	Start/stop recording (Ctrl+R)	شروع/توقف ضبط (Ctrl+R)
+Record_Saved	Recording saved: {0}	ضبط ذخیره شد: {0}
+Status_Fps	{0} fps	{0} فریم/ثانیه
+Status_Dropped	Dropped: {0}	افت فریم: {0}
+Status_Format	Format: {0}	قالب: {0}
+Status_Gpu	GPU: {0}	پردازندهٔ گرافیکی: {0}
+Status_Engine_Connected	Engine connected	موتور متصل است
+Status_Engine_Connecting	Connecting to engine…	در حال اتصال به موتور…
+Status_Engine_Lost	Engine connection lost — reconnecting…	اتصال موتور قطع شد — در حال اتصال دوباره…
+Status_Recording	REC {0}	ضبط {0}
+Status_RecordingDropped	Rec dropped: {0}	افت ضبط: {0}
+Settings_Title	Settings	تنظیمات
+Settings_Tooltip	Settings (Ctrl+,)	تنظیمات (Ctrl+,)
+Settings_Language	Interface language	زبان رابط کاربری
+Settings_Digits	Digits	ارقام
+Digits_Follow	Follow language	مطابق زبان
+Digits_Persian	Persian (۰۱۲۳)	فارسی (۰۱۲۳)
+Digits_Latin	Latin (0123)	لاتین (0123)
+Settings_Calendar	Calendar	تقویم
+Calendar_Follow	Follow language	مطابق زبان
+Calendar_Jalali	Solar Hijri (Jalali)	هجری شمسی
+Calendar_Gregorian	Gregorian	میلادی
+Settings_Clock24	24-hour clock	ساعت ۲۴ ساعته
+Settings_RecordingFolder	Recording folder	پوشهٔ ضبط
+Settings_Browse	Browse…	انتخاب…
+Settings_Format	Project format	قالب پروژه
+Settings_Format_Locked	The format cannot be changed while recording.	هنگام ضبط نمی‌توان قالب را تغییر داد.
+Common_OK	OK	تأیید
+Common_Cancel	Cancel	انصراف
+Common_Close	Close	بستن
+Common_Yes	Yes	بله
+Common_No	No	خیر
+Dialog_OpenImage	Choose an image	انتخاب تصویر
+Dialog_OpenVideo	Choose a video file	انتخاب فایل ویدیویی
+Dialog_ChooseColor	Choose a color	انتخاب رنگ
+Filter_Images	Images	تصاویر
+Filter_Videos	Video files	فایل‌های ویدیویی
+Filter_AllFiles	All files	همهٔ فایل‌ها
+Confirm_Exit_Title	Recording is active	ضبط در جریان است
+Confirm_Exit_Text	Recording is in progress. Stop recording and exit?	ضبط در حال انجام است. ضبط متوقف شود و برنامه بسته شود؟
+Error_Title	Naqsh — error	نقش — خطا
+Error_EngineStart	The engine (Naqsh.Engine.exe) could not be started.	موتور (Naqsh.Engine.exe) اجرا نشد.
+Error_Recording	Recording failed. Program output continues.	ضبط با خطا متوقف شد. خروجی برنامه ادامه دارد.
+Error_NoEncoder	No H.264 encoder is available (NVENC, AMF, Quick Sync or Media Foundation).	هیچ رمزگذار H.264 در دسترس نیست (NVENC، AMF، Quick Sync یا Media Foundation).
+Error_FfmpegMissing	FFmpeg was not found in: {0} — it must contain avcodec-63.dll (FFmpeg 9, LGPL, shared).	FFmpeg در این پوشه پیدا نشد: {0} — باید فایل avcodec-63.dll در آن باشد (FFmpeg 9، LGPL، shared).
+Error_FfmpegWrongVersion	Wrong FFmpeg version in: {0} — FFmpeg 9 (avcodec-63.dll) is required.	نسخهٔ FFmpeg در این پوشه اشتباه است: {0} — نسخهٔ 9 (فایل avcodec-63.dll) لازم است.
+Error_FfmpegGpl	The FFmpeg build in {0} is GPL. Download the LGPL build (file name contains "lgpl").	نسخهٔ FFmpeg در {0} از نوع GPL است. نسخهٔ LGPL را دانلود کنید (در اسم فایل «lgpl» هست).
+Error_FfmpegLoadFailed	FFmpeg in {0} could not be loaded. Use the 64-bit "win64-lgpl-shared-9.0" build; details are in the log.	FFmpeg در {0} بارگذاری نشد. نسخهٔ ۶۴ بیتی «win64-lgpl-shared-9.0» را استفاده کنید؛ جزئیات در فایل گزارش است.
+Error_InputFailed	An input could not be opened. A slate is shown instead.	یک ورودی باز نشد. به‌جای آن صفحهٔ جایگزین نمایش داده می‌شود.
+Error_OnAirLocked	This action is not allowed while on air.	این کار هنگام پخش مجاز نیست.
+Error_Generic	An unexpected error occurred. Details were written to the log.	خطای پیش‌بینی‌نشده‌ای رخ داد. جزئیات در گزارش ثبت شد.
+Error_RemuxFailed	The recording was kept as MKV because conversion to MP4 failed.	تبدیل به MP4 ناموفق بود؛ فایل ضبط به‌صورت MKV حفظ شد.
+Error_GpuReset	The graphics device was reset. Output resumed.	دستگاه گرافیکی بازنشانی شد. خروجی ادامه یافت.
+Clock_AM	AM	ق.ظ
+Clock_PM	PM	ب.ظ
+Month_Jalali_1	Farvardin	فروردین
+Month_Jalali_2	Ordibehesht	اردیبهشت
+Month_Jalali_3	Khordad	خرداد
+Month_Jalali_4	Tir	تیر
+Month_Jalali_5	Mordad	مرداد
+Month_Jalali_6	Shahrivar	شهریور
+Month_Jalali_7	Mehr	مهر
+Month_Jalali_8	Aban	آبان
+Month_Jalali_9	Azar	آذر
+Month_Jalali_10	Dey	دی
+Month_Jalali_11	Bahman	بهمن
+Month_Jalali_12	Esfand	اسفند
+Month_Gregorian_1	January	ژانویه
+Month_Gregorian_2	February	فوریه
+Month_Gregorian_3	March	مارس
+Month_Gregorian_4	April	آوریل
+Month_Gregorian_5	May	مه
+Month_Gregorian_6	June	ژوئن
+Month_Gregorian_7	July	ژوئیه
+Month_Gregorian_8	August	اوت
+Month_Gregorian_9	September	سپتامبر
+Month_Gregorian_10	October	اکتبر
+Month_Gregorian_11	November	نوامبر
+Month_Gregorian_12	December	دسامبر
+Weekday_0	Sunday	یکشنبه
+Weekday_1	Monday	دوشنبه
+Weekday_2	Tuesday	سه‌شنبه
+Weekday_3	Wednesday	چهارشنبه
+Weekday_4	Thursday	پنجشنبه
+Weekday_5	Friday	جمعه
+Weekday_6	Saturday	شنبه
+Date_Format	{weekday} {day} {month} {year}	{weekday} {day} {month} {year}

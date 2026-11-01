@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generated from tools/gen-resx/strings.tsv. Edit the TSV and re-run gen_resx.py. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="App_Name" xml:space="preserve"><value>نقش</value></data>
+  <data name="App_Tagline" xml:space="preserve"><value>استودیوی تولید زنده</value></data>
+  <data name="FirstRun_Title" xml:space="preserve"><value>به نقش خوش آمدید</value></data>
+  <data name="FirstRun_Subtitle" xml:space="preserve"><value>زبان و منطقهٔ پخش را انتخاب کنید. بعداً در تنظیمات قابل تغییر است.</value></data>
+  <data name="FirstRun_Language" xml:space="preserve"><value>زبان</value></data>
+  <data name="FirstRun_Region" xml:space="preserve"><value>منطقهٔ پخش</value></data>
+  <data name="FirstRun_Region_Hint" xml:space="preserve"><value>نرخ فریم پیش‌فرض پروژه‌های جدید را تعیین می‌کند.</value></data>
+  <data name="FirstRun_Start" xml:space="preserve"><value>شروع</value></data>
+  <data name="Region_Pal50" xml:space="preserve"><value>۲۵ / ۵۰ فریم (ایران، اروپا، آسیا)</value></data>
+  <data name="Region_Ntsc60" xml:space="preserve"><value>۲۹٫۹۷ / ۵۹٫۹۴ فریم (آمریکا، ژاپن)</value></data>
+  <data name="Lang_Persian" xml:space="preserve"><value>فارسی</value></data>
+  <data name="Lang_English" xml:space="preserve"><value>English</value></data>
+  <data name="Lang_Short_Fa" xml:space="preserve"><value>فا</value></data>
+  <data name="Lang_Short_En" xml:space="preserve"><value>EN</value></data>
+  <data name="Lang_Switch_Tooltip" xml:space="preserve"><value>تغییر زبان (Ctrl+L)</value></data>
+  <data name="Workspace_Director" xml:space="preserve"><value>کارگردانی</value></data>
+  <data name="Workspace_Audio" xml:space="preserve"><value>صدا</value></data>
+  <data name="Workspace_Color" xml:space="preserve"><value>رنگ</value></data>
+  <data name="Workspace_Graphics" xml:space="preserve"><value>گرافیک</value></data>
+  <data name="Workspace_ComingSoon" xml:space="preserve"><value>این بخش در فاز بعدی اضافه می‌شود.</value></data>
+  <data name="Mode_Simple" xml:space="preserve"><value>ساده</value></data>
+  <data name="Mode_Pro" xml:space="preserve"><value>حرفه‌ای</value></data>
+  <data name="Mode_Tooltip" xml:space="preserve"><value>جابه‌جایی بین چیدمان ساده و حرفه‌ای</value></data>
+  <data name="Monitor_Preview" xml:space="preserve"><value>پیش‌نمایش</value></data>
+  <data name="Monitor_Program" xml:space="preserve"><value>برنامه</value></data>
+  <data name="Monitor_NoEngine" xml:space="preserve"><value>موتور متصل نیست</value></data>
+  <data name="Transition_Cut" xml:space="preserve"><value>برش</value></data>
+  <data name="Transition_Fade" xml:space="preserve"><value>محو</value></data>
+  <data name="Transition_Duration" xml:space="preserve"><value>مدت (میلی‌ثانیه)</value></data>
+  <data name="Tooltip_Cut" xml:space="preserve"><value>برش پیش‌نمایش به برنامه (Space)</value></data>
+  <data name="Tooltip_Fade" xml:space="preserve"><value>محو پیش‌نمایش به برنامه (Enter)</value></data>
+  <data name="Inputs_Title" xml:space="preserve"><value>ورودی‌ها</value></data>
+  <data name="Inputs_Empty" xml:space="preserve"><value>هنوز ورودی‌ای ندارید. یک رنگ، تصویر یا فایل ویدیویی اضافه کنید.</value></data>
+  <data name="Input_AddColor" xml:space="preserve"><value>رنگ</value></data>
+  <data name="Input_AddImage" xml:space="preserve"><value>تصویر</value></data>
+  <data name="Input_AddVideo" xml:space="preserve"><value>ویدیو</value></data>
+  <data name="Input_Add_Tooltip" xml:space="preserve"><value>افزودن ورودی</value></data>
+  <data name="Input_ToPreview" xml:space="preserve"><value>پیش‌نمایش</value></data>
+  <data name="Input_Direct" xml:space="preserve"><value>مستقیم</value></data>
+  <data name="Input_Remove" xml:space="preserve"><value>حذف</value></data>
+  <data name="Tooltip_Input_Preview" xml:space="preserve"><value>ارسال به پیش‌نمایش (کلید عدد {0})</value></data>
+  <data name="Tooltip_Input_Direct" xml:space="preserve"><value>برش مستقیم به برنامه</value></data>
+  <data name="Tooltip_Input_Remove" xml:space="preserve"><value>حذف این ورودی</value></data>
+  <data name="Input_Status_Loading" xml:space="preserve"><value>در حال بارگذاری…</value></data>
+  <data name="Input_Status_Ready" xml:space="preserve"><value>آماده</value></data>
+  <data name="Input_Status_Offline" xml:space="preserve"><value>قطع</value></data>
+  <data name="Input_Status_ComponentMissing" xml:space="preserve"><value>FFmpeg نصب نیست</value></data>
+  <data name="Input_Kind_Color" xml:space="preserve"><value>رنگ</value></data>
+  <data name="Input_Kind_Image" xml:space="preserve"><value>تصویر</value></data>
+  <data name="Input_Kind_Video" xml:space="preserve"><value>ویدیو</value></data>
+  <data name="Tally_Program" xml:space="preserve"><value>روی آنتن</value></data>
+  <data name="Tally_Preview" xml:space="preserve"><value>پیش</value></data>
+  <data name="Color_Black" xml:space="preserve"><value>مشکی</value></data>
+  <data name="Color_White" xml:space="preserve"><value>سفید</value></data>
+  <data name="Color_Lapis" xml:space="preserve"><value>لاجوردی</value></data>
+  <data name="Color_Turquoise" xml:space="preserve"><value>فیروزه‌ای</value></data>
+  <data name="Color_Saffron" xml:space="preserve"><value>زعفرانی</value></data>
+  <data name="Color_Red" xml:space="preserve"><value>قرمز</value></data>
+  <data name="Color_Green" xml:space="preserve"><value>سبز</value></data>
+  <data name="Color_Blue" xml:space="preserve"><value>آبی</value></data>
+  <data name="Color_Gray" xml:space="preserve"><value>خاکستری</value></data>
+  <data name="Record_Start" xml:space="preserve"><value>ضبط</value></data>
+  <data name="Record_Stop" xml:space="preserve"><value>توقف</value></data>
+  <data name="Record_Tooltip" xml:space="preserve"><value>شروع/توقف ضبط (Ctrl+R)</value></data>
+  <data name="Record_Saved" xml:space="preserve"><value>ضبط ذخیره شد: {0}</value></data>
+  <data name="Status_Fps" xml:space="preserve"><value>{0} فریم/ثانیه</value></data>
+  <data name="Status_Dropped" xml:space="preserve"><value>افت فریم: {0}</value></data>
+  <data name="Status_Format" xml:space="preserve"><value>قالب: {0}</value></data>
+  <data name="Status_Gpu" xml:space="preserve"><value>پردازندهٔ گرافیکی: {0}</value></data>
+  <data name="Status_Engine_Connected" xml:space="preserve"><value>موتور متصل است</value></data>
+  <data name="Status_Engine_Connecting" xml:space="preserve"><value>در حال اتصال به موتور…</value></data>
+  <data name="Status_Engine_Lost" xml:space="preserve"><value>اتصال موتور قطع شد — در حال اتصال دوباره…</value></data>
+  <data name="Status_Recording" xml:space="preserve"><value>ضبط {0}</value></data>
+  <data name="Status_RecordingDropped" xml:space="preserve"><value>افت ضبط: {0}</value></data>
+  <data name="Settings_Title" xml:space="preserve"><value>تنظیمات</value></data>
+  <data name="Settings_Tooltip" xml:space="preserve"><value>تنظیمات (Ctrl+,)</value></data>
+  <data name="Settings_Language" xml:space="preserve"><value>زبان رابط کاربری</value></data>
+  <data name="Settings_Digits" xml:space="preserve"><value>ارقام</value></data>
+  <data name="Digits_Follow" xml:space="preserve"><value>مطابق زبان</value></data>
+  <data name="Digits_Persian" xml:space="preserve"><value>فارسی (۰۱۲۳)</value></data>
+  <data name="Digits_Latin" xml:space="preserve"><value>لاتین (0123)</value></data>
+  <data name="Settings_Calendar" xml:space="preserve"><value>تقویم</value></data>
+  <data name="Calendar_Follow" xml:space="preserve"><value>مطابق زبان</value></data>
+  <data name="Calendar_Jalali" xml:space="preserve"><value>هجری شمسی</value></data>
+  <data name="Calendar_Gregorian" xml:space="preserve"><value>میلادی</value></data>
+  <data name="Settings_Clock24" xml:space="preserve"><value>ساعت ۲۴ ساعته</value></data>
+  <data name="Settings_RecordingFolder" xml:space="preserve"><value>پوشهٔ ضبط</value></data>
+  <data name="Settings_Browse" xml:space="preserve"><value>انتخاب…</value></data>
+  <data name="Settings_Format" xml:space="preserve"><value>قالب پروژه</value></data>
+  <data name="Settings_Format_Locked" xml:space="preserve"><value>هنگام ضبط نمی‌توان قالب را تغییر داد.</value></data>
+  <data name="Common_OK" xml:space="preserve"><value>تأیید</value></data>
+  <data name="Common_Cancel" xml:space="preserve"><value>انصراف</value></data>
+  <data name="Common_Close" xml:space="preserve"><value>بستن</value></data>
+  <data name="Common_Yes" xml:space="preserve"><value>بله</value></data>
+  <data name="Common_No" xml:space="preserve"><value>خیر</value></data>
+  <data name="Dialog_OpenImage" xml:space="preserve"><value>انتخاب تصویر</value></data>
+  <data name="Dialog_OpenVideo" xml:space="preserve"><value>انتخاب فایل ویدیویی</value></data>
+  <data name="Dialog_ChooseColor" xml:space="preserve"><value>انتخاب رنگ</value></data>
+  <data name="Filter_Images" xml:space="preserve"><value>تصاویر</value></data>
+  <data name="Filter_Videos" xml:space="preserve"><value>فایل‌های ویدیویی</value></data>
+  <data name="Filter_AllFiles" xml:space="preserve"><value>همهٔ فایل‌ها</value></data>
+  <data name="Confirm_Exit_Title" xml:space="preserve"><value>ضبط در جریان است</value></data>
+  <data name="Confirm_Exit_Text" xml:space="preserve"><value>ضبط در حال انجام است. ضبط متوقف شود و برنامه بسته شود؟</value></data>
+  <data name="Error_Title" xml:space="preserve"><value>نقش — خطا</value></data>
+  <data name="Error_EngineStart" xml:space="preserve"><value>موتور (Naqsh.Engine.exe) اجرا نشد.</value></data>
+  <data name="Error_Recording" xml:space="preserve"><value>ضبط با خطا متوقف شد. خروجی برنامه ادامه دارد.</value></data>
+  <data name="Error_NoEncoder" xml:space="preserve"><value>هیچ رمزگذار H.264 در دسترس نیست (NVENC، AMF، Quick Sync یا Media Foundation).</value></data>
+  <data name="Error_FfmpegMissing" xml:space="preserve"><value>FFmpeg در این پوشه پیدا نشد: {0} — باید فایل avcodec-63.dll در آن باشد (FFmpeg 9، LGPL، shared).</value></data>
+  <data name="Error_FfmpegWrongVersion" xml:space="preserve"><value>نسخهٔ FFmpeg در این پوشه اشتباه است: {0} — نسخهٔ 9 (فایل avcodec-63.dll) لازم است.</value></data>
+  <data name="Error_FfmpegGpl" xml:space="preserve"><value>نسخهٔ FFmpeg در {0} از نوع GPL است. نسخهٔ LGPL را دانلود کنید (در اسم فایل «lgpl» هست).</value></data>
+  <data name="Error_FfmpegLoadFailed" xml:space="preserve"><value>FFmpeg در {0} بارگذاری نشد. نسخهٔ ۶۴ بیتی «win64-lgpl-shared-9.0» را استفاده کنید؛ جزئیات در فایل گزارش است.</value></data>
+  <data name="Error_InputFailed" xml:space="preserve"><value>یک ورودی باز نشد. به‌جای آن صفحهٔ جایگزین نمایش داده می‌شود.</value></data>
+  <data name="Error_OnAirLocked" xml:space="preserve"><value>این کار هنگام پخش مجاز نیست.</value></data>
+  <data name="Error_Generic" xml:space="preserve"><value>خطای پیش‌بینی‌نشده‌ای رخ داد. جزئیات در گزارش ثبت شد.</value></data>
+  <data name="Error_RemuxFailed" xml:space="preserve"><value>تبدیل به MP4 ناموفق بود؛ فایل ضبط به‌صورت MKV حفظ شد.</value></data>
+  <data name="Error_GpuReset" xml:space="preserve"><value>دستگاه گرافیکی بازنشانی شد. خروجی ادامه یافت.</value></data>
+  <data name="Clock_AM" xml:space="preserve"><value>ق.ظ</value></data>
+  <data name="Clock_PM" xml:space="preserve"><value>ب.ظ</value></data>
+  <data name="Month_Jalali_1" xml:space="preserve"><value>فروردین</value></data>
+  <data name="Month_Jalali_2" xml:space="preserve"><value>اردیبهشت</value></data>
+  <data name="Month_Jalali_3" xml:space="preserve"><value>خرداد</value></data>
+  <data name="Month_Jalali_4" xml:space="preserve"><value>تیر</value></data>
+  <data name="Month_Jalali_5" xml:space="preserve"><value>مرداد</value></data>
+  <data name="Month_Jalali_6" xml:space="preserve"><value>شهریور</value></data>
+  <data name="Month_Jalali_7" xml:space="preserve"><value>مهر</value></data>
+  <data name="Month_Jalali_8" xml:space="preserve"><value>آبان</value></data>
+  <data name="Month_Jalali_9" xml:space="preserve"><value>آذر</value></data>
+  <data name="Month_Jalali_10" xml:space="preserve"><value>دی</value></data>
+  <data name="Month_Jalali_11" xml:space="preserve"><value>بهمن</value></data>
+  <data name="Month_Jalali_12" xml:space="preserve"><value>اسفند</value></data>
+  <data name="Month_Gregorian_1" xml:space="preserve"><value>ژانویه</value></data>
+  <data name="Month_Gregorian_2" xml:space="preserve"><value>فوریه</value></data>
+  <data name="Month_Gregorian_3" xml:space="preserve"><value>مارس</value></data>
+  <data name="Month_Gregorian_4" xml:space="preserve"><value>آوریل</value></data>
+  <data name="Month_Gregorian_5" xml:space="preserve"><value>مه</value></data>
+  <data name="Month_Gregorian_6" xml:space="preserve"><value>ژوئن</value></data>
+  <data name="Month_Gregorian_7" xml:space="preserve"><value>ژوئیه</value></data>
+  <data name="Month_Gregorian_8" xml:space="preserve"><value>اوت</value></data>
+  <data name="Month_Gregorian_9" xml:space="preserve"><value>سپتامبر</value></data>
+  <data name="Month_Gregorian_10" xml:space="preserve"><value>اکتبر</value></data>
+  <data name="Month_Gregorian_11" xml:space="preserve"><value>نوامبر</value></data>
+  <data name="Month_Gregorian_12" xml:space="preserve"><value>دسامبر</value></data>
+  <data name="Weekday_0" xml:space="preserve"><value>یکشنبه</value></data>
+  <data name="Weekday_1" xml:space="preserve"><value>دوشنبه</value></data>
+  <data name="Weekday_2" xml:space="preserve"><value>سه‌شنبه</value></data>
+  <data name="Weekday_3" xml:space="preserve"><value>چهارشنبه</value></data>
+  <data name="Weekday_4" xml:space="preserve"><value>پنجشنبه</value></data>
+  <data name="Weekday_5" xml:space="preserve"><value>جمعه</value></data>
+  <data name="Weekday_6" xml:space="preserve"><value>شنبه</value></data>
+  <data name="Date_Format" xml:space="preserve"><value>{weekday} {day} {month} {year}</value></data>
+</root>
