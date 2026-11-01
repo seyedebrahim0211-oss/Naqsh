@@ -30,6 +30,33 @@ public class PortableEngineTests
     }
 
     [Fact]
+    public void FfmpegFolder_IsFoundInSubfolders_AndWrongVersionIsReported()
+    {
+        var root = Directory.CreateTempSubdirectory("naqsh-ffmpeg-");
+        try
+        {
+            Assert.Equal("avcodec-62.dll", Media.FfmpegRuntime.MarkerDll);
+            Assert.Null(Media.FfmpegRuntime.FindLibraryFolder(root.FullName, out var none));
+            Assert.Null(none);
+
+            // Wrong version only (e.g. FFmpeg 7.1).
+            var old = Directory.CreateDirectory(Path.Combine(root.FullName, "old"));
+            File.WriteAllText(Path.Combine(old.FullName, "avcodec-61.dll"), string.Empty);
+            Assert.Null(Media.FfmpegRuntime.FindLibraryFolder(root.FullName, out var other));
+            Assert.Equal("avcodec-61.dll", other);
+
+            // Zip extracted as-is: ffmpeg\ffmpeg-n8.0-...-shared\bin\avcodec-62.dll
+            var bin = Directory.CreateDirectory(Path.Combine(root.FullName, "ffmpeg-n8.0-latest-win64-lgpl-shared-8.0", "bin"));
+            File.WriteAllText(Path.Combine(bin.FullName, "avcodec-62.dll"), string.Empty);
+            Assert.Equal(bin.FullName, Media.FfmpegRuntime.FindLibraryFolder(root.FullName, out _));
+        }
+        finally
+        {
+            root.Delete(true);
+        }
+    }
+
+    [Fact]
     public void MasterClock_ConvertsStopwatchTicks()
     {
         Assert.Equal(TimeSpan.TicksPerSecond, MasterClock.ToTicks(Stopwatch.Frequency));

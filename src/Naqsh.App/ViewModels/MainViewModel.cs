@@ -237,7 +237,8 @@ public sealed partial class MainViewModel : ObservableObject
                 OnPropertyChanged(nameof(TimecodeText));
                 break;
             case ErrorEvent e:
-                Notify("Error_" + e.Code, null);
+                // Detail (e.g. the FFmpeg folder) fills {0} in messages that have it.
+                Notify("Error_" + e.Code, e.Detail);
                 break;
         }
     }

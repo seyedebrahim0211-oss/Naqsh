@@ -131,7 +131,9 @@ public sealed class ProgramRecorder : IRecorder
         ArgumentNullException.ThrowIfNull(log);
         if (!FfmpegRuntime.EnsureLoaded(log))
         {
-            throw new RecorderException("FfmpegMissing", "FFmpeg is not available.");
+            throw new RecorderException(
+                FfmpegRuntime.LastProblem ?? "FfmpegMissing",
+                FfmpegRuntime.LastProblemDetail ?? FfmpegRuntime.SearchFolder);
         }
 
         return new ProgramRecorder(gpu, format, folder, log);

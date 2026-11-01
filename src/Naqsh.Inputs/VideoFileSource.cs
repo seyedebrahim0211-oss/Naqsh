@@ -243,10 +243,14 @@ public sealed unsafe class VideoFileSource : IVideoSource
 
     private void DecodeThread()
     {
-        if (!FfmpegRuntime.EnsureLoaded(_log))
+        // FFmpeg may be installed while the app runs: keep checking instead of giving up.
+        while (!FfmpegRuntime.EnsureLoaded(_log))
         {
             _status = InputStatus.ComponentMissing;
-            return;
+            if (_stop || _wake.WaitOne(TimeSpan.FromSeconds(3)) && _stop)
+            {
+                return;
+            }
         }
 
         var delay = TimeSpan.FromSeconds(2);

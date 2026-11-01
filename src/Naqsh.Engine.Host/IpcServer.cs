@@ -162,6 +162,11 @@ internal sealed class IpcServer
         {
             case AddInputRequest r:
                 _engine.AddInput(r.Input);
+                if (r.Input.Kind == Core.Model.InputKind.Video)
+                {
+                    await ReportIfFfmpegMissingAsync(channel, ct).ConfigureAwait(false);
+                }
+
                 break;
             case RemoveInputRequest r:
                 _engine.RemoveInput(r.InputId);
@@ -190,6 +195,17 @@ internal sealed class IpcServer
             default:
                 _log.Warning("Unexpected message {Type}", msg.GetType().Name);
                 break;
+        }
+    }
+
+    private async Task ReportIfFfmpegMissingAsync(MessageChannel channel, CancellationToken ct)
+    {
+        var loaded = await Task.Run(() => Media.FfmpegRuntime.EnsureLoaded(_log), ct).ConfigureAwait(false);
+        if (!loaded)
+        {
+            var code = Media.FfmpegRuntime.LastProblem ?? "FfmpegMissing";
+            var folder = Media.FfmpegRuntime.LastProblemDetail ?? Media.FfmpegRuntime.SearchFolder;
+            await channel.SendAsync(new ErrorEvent(code, folder), ct).ConfigureAwait(false);
         }
     }
 
