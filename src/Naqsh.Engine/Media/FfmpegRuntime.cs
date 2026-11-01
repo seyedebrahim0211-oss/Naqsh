@@ -5,7 +5,7 @@ using Serilog;
 namespace Naqsh.Engine.Media;
 
 /// <summary>
-/// Loads the LGPL FFmpeg 8.0 shared libraries at runtime from the "ffmpeg" folder next to the
+/// Loads the LGPL FFmpeg 9 shared libraries at runtime from the "ffmpeg" folder next to the
 /// executable (or NAQSH_FFMPEG_PATH). Sub-folders are searched too, so "ffmpeg\bin" or the folder
 /// extracted from a release zip also work. The app works without FFmpeg: file inputs and
 /// recording report <see cref="LastProblem"/> instead. A failed load is retried after a few
@@ -15,7 +15,7 @@ public static partial class FfmpegRuntime
 {
     public const string PathEnvironmentVariable = "NAQSH_FFMPEG_PATH";
 
-    /// <summary>The DLL that identifies a matching FFmpeg 8.0 build.</summary>
+    /// <summary>The DLL that identifies a matching FFmpeg 9 build.</summary>
     public static readonly string MarkerDll = $"avcodec-{ffmpeg.LibraryVersionMap["avcodec"]}.dll";
 
     private static readonly TimeSpan RetryAfter = TimeSpan.FromSeconds(3);
@@ -139,7 +139,7 @@ public static partial class FfmpegRuntime
     {
         if (LastProblem != code || LastProblemDetail != folder)
         {
-            log.Warning("FFmpeg unavailable ({Code}) in {Folder} {Extra}; expected {Marker} (FFmpeg 8.0 LGPL shared)", code, folder, extra, MarkerDll);
+            log.Warning("FFmpeg unavailable ({Code}) in {Folder} {Extra}; expected {Marker} (FFmpeg 9 LGPL shared)", code, folder, extra, MarkerDll);
         }
 
         LastProblem = code;

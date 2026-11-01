@@ -112,10 +112,10 @@
   <data name="Error_EngineStart" xml:space="preserve"><value>The engine (Naqsh.Engine.exe) could not be started.</value></data>
   <data name="Error_Recording" xml:space="preserve"><value>Recording failed. Program output continues.</value></data>
   <data name="Error_NoEncoder" xml:space="preserve"><value>No H.264 encoder is available (NVENC, AMF, Quick Sync or Media Foundation).</value></data>
-  <data name="Error_FfmpegMissing" xml:space="preserve"><value>FFmpeg was not found in: {0} — it must contain avcodec-62.dll (FFmpeg 8.0, LGPL, shared).</value></data>
-  <data name="Error_FfmpegWrongVersion" xml:space="preserve"><value>Wrong FFmpeg version in: {0} — FFmpeg 8.0 (avcodec-62.dll) is required.</value></data>
+  <data name="Error_FfmpegMissing" xml:space="preserve"><value>FFmpeg was not found in: {0} — it must contain avcodec-63.dll (FFmpeg 9, LGPL, shared).</value></data>
+  <data name="Error_FfmpegWrongVersion" xml:space="preserve"><value>Wrong FFmpeg version in: {0} — FFmpeg 9 (avcodec-63.dll) is required.</value></data>
   <data name="Error_FfmpegGpl" xml:space="preserve"><value>The FFmpeg build in {0} is GPL. Download the LGPL build (file name contains "lgpl").</value></data>
-  <data name="Error_FfmpegLoadFailed" xml:space="preserve"><value>FFmpeg in {0} could not be loaded. Use the 64-bit "win64-lgpl-shared-8.0" build; details are in the log.</value></data>
+  <data name="Error_FfmpegLoadFailed" xml:space="preserve"><value>FFmpeg in {0} could not be loaded. Use the 64-bit "win64-lgpl-shared-9.0" build; details are in the log.</value></data>
   <data name="Error_InputFailed" xml:space="preserve"><value>An input could not be opened. A slate is shown instead.</value></data>
   <data name="Error_OnAirLocked" xml:space="preserve"><value>This action is not allowed while on air.</value></data>
   <data name="Error_Generic" xml:space="preserve"><value>An unexpected error occurred. Details were written to the log.</value></data>

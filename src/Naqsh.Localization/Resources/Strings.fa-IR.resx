@@ -112,10 +112,10 @@
   <data name="Error_EngineStart" xml:space="preserve"><value>موتور (Naqsh.Engine.exe) اجرا نشد.</value></data>
   <data name="Error_Recording" xml:space="preserve"><value>ضبط با خطا متوقف شد. خروجی برنامه ادامه دارد.</value></data>
   <data name="Error_NoEncoder" xml:space="preserve"><value>هیچ رمزگذار H.264 در دسترس نیست (NVENC، AMF، Quick Sync یا Media Foundation).</value></data>
-  <data name="Error_FfmpegMissing" xml:space="preserve"><value>FFmpeg در این پوشه پیدا نشد: {0} — باید فایل avcodec-62.dll در آن باشد (FFmpeg 8.0، LGPL، shared).</value></data>
-  <data name="Error_FfmpegWrongVersion" xml:space="preserve"><value>نسخهٔ FFmpeg در این پوشه اشتباه است: {0} — نسخهٔ 8.0 (فایل avcodec-62.dll) لازم است.</value></data>
+  <data name="Error_FfmpegMissing" xml:space="preserve"><value>FFmpeg در این پوشه پیدا نشد: {0} — باید فایل avcodec-63.dll در آن باشد (FFmpeg 9، LGPL، shared).</value></data>
+  <data name="Error_FfmpegWrongVersion" xml:space="preserve"><value>نسخهٔ FFmpeg در این پوشه اشتباه است: {0} — نسخهٔ 9 (فایل avcodec-63.dll) لازم است.</value></data>
   <data name="Error_FfmpegGpl" xml:space="preserve"><value>نسخهٔ FFmpeg در {0} از نوع GPL است. نسخهٔ LGPL را دانلود کنید (در اسم فایل «lgpl» هست).</value></data>
-  <data name="Error_FfmpegLoadFailed" xml:space="preserve"><value>FFmpeg در {0} بارگذاری نشد. نسخهٔ ۶۴ بیتی «win64-lgpl-shared-8.0» را استفاده کنید؛ جزئیات در فایل گزارش است.</value></data>
+  <data name="Error_FfmpegLoadFailed" xml:space="preserve"><value>FFmpeg در {0} بارگذاری نشد. نسخهٔ ۶۴ بیتی «win64-lgpl-shared-9.0» را استفاده کنید؛ جزئیات در فایل گزارش است.</value></data>
   <data name="Error_InputFailed" xml:space="preserve"><value>یک ورودی باز نشد. به‌جای آن صفحهٔ جایگزین نمایش داده می‌شود.</value></data>
   <data name="Error_OnAirLocked" xml:space="preserve"><value>این کار هنگام پخش مجاز نیست.</value></data>
   <data name="Error_Generic" xml:space="preserve"><value>خطای پیش‌بینی‌نشده‌ای رخ داد. جزئیات در گزارش ثبت شد.</value></data>
