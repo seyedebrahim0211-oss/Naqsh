@@ -191,6 +191,67 @@ public class ProductionEngineTests
     }
 
     [SkippableFact]
+    public void RenderLoopSteps_AreEachAllocationFree()
+    {
+        // Measures every per-frame step on its own so a failure names the step that allocates.
+        Skip.IfNot(OperatingSystem.IsWindows(), "Direct3D 11 requires Windows");
+        using var gpu = GpuTestHelpers.CreateWarp();
+        using var comp = new Compositor(gpu);
+        using var fp16 = new RenderTarget(gpu.Device, 320, 180, Vortice.DXGI.Format.R16G16B16A16_Float);
+        using var mon = new SharedSurface(gpu.Device, 160, 90, "NaqshAllocTest_" + Guid.NewGuid().ToString("N"));
+        var red = new DrawSource(null, 0, 0, true, new Vector4(1, 0, 0, 1));
+        var blue = new DrawSource(null, 0, 0, true, new Vector4(0, 0, 1, 1));
+        var switcher = new Core.Switching.Switcher();
+        var source = new FakeSource(new InputDescriptor { Kind = InputKind.Color });
+        var frame = new Sources.FrameContext(0, 0, Small);
+
+        var results = new List<string>();
+        var removed = false;
+        DrawSource last = default;
+        void Measure(string name, Action<int> step)
+        {
+            for (var i = 0; i < 200; i++)
+            {
+                step(i); // warm up / JIT
+            }
+
+            var before = GC.GetAllocatedBytesForCurrentThread();
+            for (var i = 0; i < 1000; i++)
+            {
+                step(i);
+            }
+
+            var bytes = GC.GetAllocatedBytesForCurrentThread() - before;
+            if (bytes != 0)
+            {
+                results.Add($"{name}: {bytes} bytes / 1000 calls");
+            }
+        }
+
+        Measure("Switcher.Tick", i => switcher.Tick(i));
+        Measure("Compositor.Mix", _ => comp.Mix(fp16, red, blue, 0.5f));
+        Measure("Compositor.Copy", _ => comp.Copy(fp16, mon.Target));
+        Measure("KeyedMutex acquire/release", _ =>
+        {
+            if (KeyedMutex.TryAcquire(mon.Mutex, 0, 0))
+            {
+                KeyedMutex.Release(mon.Mutex, 0);
+            }
+        });
+        Measure("Context.Flush", _ => gpu.Context.Flush());
+        Measure("Device.DeviceRemovedReason", n => removed |= gpu.IsRemoved);
+        Measure("IVideoSource.Update + Current", n =>
+        {
+            source.Update(gpu.Context, in frame);
+            last = source.Current;
+        });
+
+        Assert.False(removed);
+        Assert.Null(last.View);
+        Assert.True(results.Count == 0, "Allocating steps:\n" + string.Join('\n', results));
+    }
+
+    [SkippableFact]
     public void SteadyStateRenderLoop_Allocates_ZeroBytes_Over1000Frames()
     {
         // docs/QA.md: steady-state render loop allocates 0 bytes over 1,000 ticks.

@@ -43,8 +43,9 @@ public sealed class MessageChannel : IAsyncDisposable
         await _sendLock.WaitAsync(ct).ConfigureAwait(false);
         try
         {
+            // No FlushAsync: PipeStream writes are unbuffered, and on Windows Flush calls
+            // FlushFileBuffers, which blocks until the other side has READ the data (deadlock risk).
             await _stream.WriteAsync(buf, ct).ConfigureAwait(false);
-            await _stream.FlushAsync(ct).ConfigureAwait(false);
         }
         finally
         {
