@@ -106,4 +106,10 @@ public static class IpcProtocol
     public static string PipeName => $"Naqsh.Engine.v{Version}.{Environment.UserName}";
 
     public const int MaxMessageBytes = 4 * 1024 * 1024;
+
+    /// <summary>
+    /// Pipe buffer size. With the default of 0, Windows makes every write wait until the peer
+    /// reads it; a buffer lets state and stats messages be sent without waiting on the UI.
+    /// </summary>
+    public const int PipeBufferBytes = 64 * 1024;
 }

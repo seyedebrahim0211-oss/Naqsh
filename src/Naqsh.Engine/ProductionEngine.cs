@@ -431,7 +431,7 @@ public sealed class ProductionEngine : IFrameRenderer, IDisposable
                 if (rec.FailureCode is not null && !_failureReported)
                 {
                     _failureReported = true;
-                    _ = Task.Run(() => StopAfterFailureAsync(rec));
+                    StartStopAfterFailure(rec);
                 }
             }
         }
@@ -444,6 +444,13 @@ public sealed class ProductionEngine : IFrameRenderer, IDisposable
     }
 
     private bool _failureReported;
+
+    /// <summary>
+    /// Kept out of <see cref="DrawFrame"/> on purpose: a lambda there capturing a local makes the
+    /// compiler allocate its closure on every frame, even when the lambda never runs.
+    /// </summary>
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
+    private void StartStopAfterFailure(IRecorder rec) => _ = Task.Run(() => StopAfterFailureAsync(rec));
 
     private async Task StopAfterFailureAsync(IRecorder rec)
     {

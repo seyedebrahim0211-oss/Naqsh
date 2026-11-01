@@ -173,7 +173,7 @@ public class IpcTests
     public async Task NamedPipe_Loopback_HelloExchange()
     {
         var name = "naqsh-test-" + Guid.NewGuid().ToString("N");
-        await using var server = new NamedPipeServerStream(name, PipeDirection.InOut, 1, PipeTransmissionMode.Byte, PipeOptions.Asynchronous);
+        await using var server = new NamedPipeServerStream(name, PipeDirection.InOut, 1, PipeTransmissionMode.Byte, PipeOptions.Asynchronous, IpcProtocol.PipeBufferBytes, IpcProtocol.PipeBufferBytes);
         await using var client = new NamedPipeClientStream(".", name, PipeDirection.InOut, PipeOptions.Asynchronous);
         var accept = server.WaitForConnectionAsync();
         await client.ConnectAsync(5000);

@@ -45,7 +45,9 @@ internal sealed class IpcServer
                     PipeDirection.InOut,
                     1,
                     PipeTransmissionMode.Byte,
-                    PipeOptions.Asynchronous | PipeOptions.CurrentUserOnly);
+                    PipeOptions.Asynchronous | PipeOptions.CurrentUserOnly,
+                    IpcProtocol.PipeBufferBytes,
+                    IpcProtocol.PipeBufferBytes);
                 await using (pipe.ConfigureAwait(false))
                 {
                     await pipe.WaitForConnectionAsync(ct).ConfigureAwait(false);
