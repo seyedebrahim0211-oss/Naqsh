@@ -1,1 +1,76 @@
+name: CI
+
+on:
+  push:
+    branches: [ '**' ]
+    tags: [ 'v*' ]
+  pull_request:
+
+jobs:
+  build-test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Check solution exists
+        id: sln
+        shell: pwsh
+        run: |
+          if (Test-Path "Naqsh.sln") { "exists=true" >> $env:GITHUB_OUTPUT } else { "exists=false" >> $env:GITHUB_OUTPUT }
+
+      - name: Restore
+        if: steps.sln.outputs.exists == 'true'
+        run: dotnet restore
+
+      - name: Build
+        if: steps.sln.outputs.exists == 'true'
+        run: dotnet build -c Release --no-restore /p:TreatWarningsAsErrors=true
+
+      - name: Test (all tests, GPU tests on WARP)
+        if: steps.sln.outputs.exists == 'true'
+        env:
+          NAQSH_GPU_ADAPTER: WARP
+        run: dotnet test -c Release --no-build --logger trx --results-directory TestResults
+
+      - name: Upload test results
+        if: always() && steps.sln.outputs.exists == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: TestResults
+
+      - name: Publish app
+        if: steps.sln.outputs.exists == 'true'
+        run: |
+          dotnet publish src/Naqsh.App -c Release -r win-x64 --self-contained true -o publish/app
+          dotnet publish src/Naqsh.Engine.Host -c Release -r win-x64 --self-contained true -o publish/app
+
+      - name: Upload build
+        if: steps.sln.outputs.exists == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: naqsh-win-x64
+          path: publish/app
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build-test
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: naqsh-win-x64
+          path: naqsh
+      - name: Zip
+        shell: pwsh
+        run: Compress-Archive -Path naqsh/* -DestinationPath naqsh-win-x64.zip
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: naqsh-win-x64.zip
 
